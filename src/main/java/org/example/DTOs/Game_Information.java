@@ -5,6 +5,7 @@ public class Game_Information
     private int GameId;
     private String Game_name;
     private String Game_console;
+    private String Game_publisher;
     private String Game_developer;
     private String Game_franchise;
     private String Game_releasedate;
@@ -17,10 +18,12 @@ public class Game_Information
     }
 
     //Full Con
-    public Game_Information(int gameId, String game_name, String game_console, String game_developer, String game_franchise, String game_releasedate, boolean multiplayer, int player_amount, int review_Score) {
+
+    public Game_Information(int gameId, String game_name, String game_console, String game_publisher, String game_developer, String game_franchise, String game_releasedate, boolean multiplayer, int player_amount, int review_Score) {
         GameId = gameId;
         Game_name = game_name;
         Game_console = game_console;
+        Game_publisher = game_publisher;
         Game_developer = game_developer;
         Game_franchise = game_franchise;
         Game_releasedate = game_releasedate;
@@ -41,6 +44,13 @@ public class Game_Information
     }
     public void setGame_name(String game_name) {
         Game_name = game_name;
+    }
+
+    public String getGame_publisher() {
+        return Game_publisher;
+    }
+    public void setGame_publisher(String game_publisher) {
+        Game_publisher = game_publisher;
     }
 
     public String getGame_console() {
