@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Created DAO,DTO package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/InfoDaoInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" afterDir="false" />
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,6 +49,26 @@
       <recent name="org.example.DAOs" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.GameObjects.App" />
+      <module name="CA5-OOP-Jakuciunas-Dovydas" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.GameObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710114229665</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database">
+      <created>1710115404692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710115404692</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,6 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created DAO,DTO package" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created DAO,DTO package" />
+    <MESSAGE value="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database" />
   </component>
 </project>
