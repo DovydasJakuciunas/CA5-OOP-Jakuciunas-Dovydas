@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Got Connection Code Done.&#10;Attempting to Fix it">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710115404692</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Got Connection Code Done.&#10;Attempting to Fix it">
+      <created>1710116253710</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710116253710</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created DAO,DTO package" />
     <MESSAGE value="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database" />
+    <MESSAGE value="Got Connection Code Done.&#10;Attempting to Fix it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Got Connection Code Done.&#10;Attempting to Fix it" />
   </component>
 </project>
