@@ -3,12 +3,8 @@ package org.example.DAOs;
 import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
@@ -148,8 +144,9 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return 0;
     }
 
+    //int GameId, String Game_name, String Game_console, String Game_publisher, String Game_developer, String Game_franchise, String Game_releasedate, boolean Multiplayer, int Player_amount, int Review_Score
     @Override
-    public Game_Information registerGame(int GameId, String Game_name, String Game_console, String Game_publisher, String Game_developer, String Game_franchise, String Game_releasedate, boolean Multiplayer, int Player_amount, int Review_Score) throws DaoException {
+    public Game_Information registerGame(Game_Information gameInfo) throws DaoException {
         Game_Information gm = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -158,29 +155,29 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
             connection = getConnection();
             String query = "insert into gameinformation(GAMEID, GAME_NAME, GAME_CONSOLE,GAME_PUBLISHER, GAME_DEVELOPER,GAME_FRANCHISE,GAME_RELEASEDATE,MULTIPLAYER, PLAYER_AMOUNT, REVIEW_SCORE)" + "values(?,?,?,?,?,?,?,?,?,?)";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,GameId);
-            preparedStatement.setString(2,Game_name);
-            preparedStatement.setString(3,Game_console);
-            preparedStatement.setString(4,Game_publisher);
-            preparedStatement.setString(5,Game_developer);
-            preparedStatement.setString(6,Game_franchise);
-            preparedStatement.setString(7,Game_releasedate);
-            preparedStatement.setBoolean(8,Multiplayer);
-            preparedStatement.setInt(9,Player_amount);
-            preparedStatement.setInt(10,Review_Score);
+            preparedStatement.setInt(1,GenerateId());
+            preparedStatement.setString(2, gameInfo.getGame_name());
+            preparedStatement.setString(3,gameInfo.getGame_console());
+            preparedStatement.setString(4, gameInfo.getGame_publisher());
+            preparedStatement.setString(5,gameInfo.getGame_developer());
+            preparedStatement.setString(6,gameInfo.getGame_franchise());
+            preparedStatement.setString(7,gameInfo.getGame_releasedate());
+            preparedStatement.setBoolean(8,gameInfo.isMultiplayer());
+            preparedStatement.setInt(9,gameInfo.getPlayer_amount());
+            preparedStatement.setInt(10,gameInfo.getReview_Score());
 
             int id = preparedStatement.executeUpdate();
             gm = new Game_Information();
             gm.setGameId(id);
-            gm.setGame_name(Game_name);
-            gm.setGame_console(Game_console);
-            gm.setGame_publisher(Game_publisher);
-            gm.setGame_developer(Game_developer);
-            gm.setGame_franchise(Game_franchise);
-            gm.setGame_releasedate(Game_releasedate);
-            gm.setMultiplayer(Multiplayer);
-            gm.setPlayer_amount(Player_amount);
-            gm.setReview_Score(Review_Score);
+            gm.setGame_name(gameInfo.getGame_name());
+            gm.setGame_console(gameInfo.getGame_console());
+            gm.setGame_publisher(gameInfo.getGame_publisher());
+            gm.setGame_developer(gameInfo.getGame_developer());
+            gm.setGame_franchise(gameInfo.getGame_franchise());
+            gm.setGame_releasedate(gameInfo.getGame_releasedate());
+            gm.setMultiplayer(gameInfo.isMultiplayer());
+            gm.setPlayer_amount(gameInfo.getPlayer_amount());
+            gm.setReview_Score(gameInfo.getReview_Score());
 
         } catch (SQLException e)
         {
@@ -210,30 +207,33 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 
         try{
             connection = getConnection();
-            String query = "update gameinformation set  GAME_NAME = ?, GAME_CONSOLE =?, GAME_PUBLISHER=?,GAME_DEVELOPER = ?,GAME_FRANCHISE = ?,MULTIPLAYER = ?, PLAYER_AMOUNT = ?,REVIEW_SCORE = ? where GAMEID=?";
+            String query = "update gameinformation set  GAME_NAME = ?, GAME_CONSOLE =?, GAME_PUBLISHER=?,GAME_DEVELOPER = ?,GAME_FRANCHISE = ?,MULTIPLAYER = ?, PLAYER_AMOUNT = ?,REVIEW_SCORE = ? where GameId=?";
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, game.getGame_name());
-            preparedStatement.setString(2,game.getGame_console());
-            preparedStatement.setString(3, game.getGame_publisher());
-            preparedStatement.setString(4, game.getGame_developer());
-            preparedStatement.setString(5, game.getGame_franchise());
-            preparedStatement.setString(6, game.getGame_releasedate());
-            preparedStatement.setBoolean(7,game.isMultiplayer());
-            preparedStatement.setInt(8,game.getPlayer_amount());
-            preparedStatement.setInt(9,game.getReview_Score());
+            preparedStatement.setString(2, game.getGame_name());
+            preparedStatement.setString(3,game.getGame_console());
+            preparedStatement.setString(4, game.getGame_publisher());
+            preparedStatement.setString(5, game.getGame_developer());
+            preparedStatement.setString(6, game.getGame_franchise());
+            preparedStatement.setString(7, game.getGame_releasedate());
+            preparedStatement.setBoolean(8,game.isMultiplayer());
+            preparedStatement.setInt(9,game.getPlayer_amount());
+            preparedStatement.setInt(10,game.getReview_Score());
             rowsUpdated = preparedStatement.executeUpdate();
         }catch (SQLException e) {
             throw new DaoException("Update Game Information failed " + e.getMessage());
         } finally {
 
-            try {
-                if (preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
+            try
+            {
+                    if (preparedStatement != null) {
+                        preparedStatement.close();
+                    }
+                    if (connection != null) {
+                        connection.close();
+                    }
+            }
+            catch (SQLException e)
+            {
                 throw new RuntimeException(e);
             }
         }
@@ -242,5 +242,46 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return game;
     }
 
+    @Override
+    public int GenerateId() throws DaoException {
+        Connection connection = null;
+        PreparedStatement preparedStatement= null;
+        int newId = 0;
 
+        try{
+            connection = getConnection();
+
+            String query = "select MAX(GAMEID) from gameinformation";
+            preparedStatement = connection.prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery(query);
+            {
+                if (resultSet.next()) {
+                    newId = resultSet.getInt(1) + 1; // Increment the maximum id by 1
+                }
+
+                    }
+
+
+            } catch (SQLException e) {
+            throw new RuntimeException("Failed to GenerateId()"+e);
+        }finally
+        {
+            try
+            {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            }
+            catch (SQLException e)
+            {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return newId;
+    }
 }

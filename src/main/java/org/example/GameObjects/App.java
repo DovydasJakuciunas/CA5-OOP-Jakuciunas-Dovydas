@@ -14,6 +14,10 @@ import static javafx.application.Platform.exit;
 public class App {
     public static void main(String[] args) throws DaoException {
 
+        InfoDaoInterface IInfoDao = new MySqlInfoDao();
+        List<Game_Information> gameList = IInfoDao.findAllGames();
+        Game_Information game = new Game_Information();
+
 
         Scanner in = new Scanner(System.in);
 
@@ -28,9 +32,12 @@ public class App {
             {
                 ShowMenu();
                 int continueOn = in.nextInt();
-                ChosenOption(continueOn, in);
-
+                ChosenOption(continueOn, in,IInfoDao,gameList,game);
             }
+//            System.out.println("Please enter the games Id Which you wish to update!!1");
+//            int personUpdate = in.nextInt();
+//            Game_Information gameUpdate = IInfoDao.updateGameById(personUpdate, game);
+//            System.out.println(gameUpdate);
 
 
         } catch (DaoException e) {
@@ -38,13 +45,10 @@ public class App {
         }
     }
 
-    private static int ChosenOption(int usersChoice, Scanner in) throws DaoException {
-        InfoDaoInterface IInfoDao = new MySqlInfoDao();
-        List<Game_Information> gameInfo = IInfoDao.findAllGames();
-
+    private static int ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao,List<Game_Information> gameList,Game_Information game) throws DaoException {
 
         if (usersChoice == 1){
-            FindAllGameInfo(gameInfo,IInfoDao);
+            FindAllGameInfo(gameList,IInfoDao);
             return 0;
         }
         if (usersChoice ==2){
@@ -54,8 +58,12 @@ public class App {
         }
         if (usersChoice ==3 ) {
             System.out.println("Which game would you like to delete");
-            DeleteGameByID(IInfoDao,gameInfo,in);
+            DeleteGameByID(IInfoDao,gameList,in);
             return 0;
+        }
+        if (usersChoice == 4)
+        {
+            registerGame(game);
         }
         if (usersChoice == 0)
         {
@@ -83,59 +91,67 @@ public class App {
 
     }
 
-    private static void AddNewGame(InfoDaoInterface IInfoDao, Scanner in) throws DaoException {
+    private static Game_Information registerGame(Game_Information gameInfo) throws DaoException {
+        InfoDaoInterface IInfoDao = new MySqlInfoDao();
         //Feature 4 – Insert an Entity
+        Scanner in = new Scanner(System.in);
         System.out.println("\n Call registerGame()");
-        System.out.println("Game ID ");
-        int gameIdIn = in.nextInt();
 
 
-        System.out.println("Game Name ");
+        System.out.println("Game Name: ");
         String gameNameIn = in.next();
+        gameInfo.setGame_name(gameNameIn);
 
-        System.out.println("Console Where Game Began ");
+        System.out.println("Console Where Game Began: ");
         String gameConsoleIn = in.next();
+        gameInfo.setGame_console(gameConsoleIn);
 
-        System.out.println("Publisher of The Game ");
+        System.out.println("Publisher of The Game: ");
         String gamePubIn = in.next();
+        gameInfo.setGame_publisher(gamePubIn);
 
-        System.out.println("Developer of The Game ");
+        System.out.println("Developer of The Game: ");
         String gameDevIn = in.next();
+        gameInfo.setGame_developer(gameDevIn);
 
-        System.out.println("Franchise which it belongs to ");
+        System.out.println("Franchise which it belongs to: ");
         String gameFraIn = in.next();
+        gameInfo.setGame_franchise(gameFraIn);
 
-        System.out.println("Release Date ");
+        System.out.println("Release Date: ");
         String gameDateIn = in.next();
+        gameInfo.setGame_releasedate(gameDateIn);
 
-        System.out.println("Is it Multiplayer");
+        System.out.println("Is it Multiplayer (True or False): ");
         boolean multiIn = in.nextBoolean();
+        gameInfo.setMultiplayer(multiIn);
 
-        System.out.println("Player Amount (Counted in the thousands, Whole Numbers)");
+        System.out.println("Player Amount: (Counted in the thousands, Whole Numbers)");
         int playerIn = in.nextInt();
+        gameInfo.setPlayer_amount(playerIn);
 
-        System.out.println("Review of game(Whole number from 0-100)");
+        System.out.println("Review of game: (Whole number from 0-100)");
         int reviewIn = in.nextInt();
+        gameInfo.setReview_Score(reviewIn);
 
-        Game_Information rowsUpdated = IInfoDao.registerGame(gameIdIn,gameNameIn,gameConsoleIn,gamePubIn,gameDevIn,gameFraIn,gameDateIn,multiIn,playerIn,reviewIn);
+        return IInfoDao.registerGame(gameInfo);
 
     }
 
-    private static void DeleteGameByID(InfoDaoInterface IInfoDao, List<Game_Information> gameInfo, Scanner in) throws DaoException {
+    private static void DeleteGameByID(InfoDaoInterface IInfoDao, List<Game_Information> gameList, Scanner in) throws DaoException {
         //Feature 3 – Delete an Entity by key
         System.out.println("\n Delete Game by ID of your choice");
         int id = in.nextInt();
         in.nextLine();
         int rowsAffected = IInfoDao.deleteGameById(id);
         System.out.println("Rows Deleted "+ rowsAffected);
-        printInfo(gameInfo);
+        printInfo(gameList);
     }
 
-    private static void FindAllGameInfo(List<Game_Information> gameInfo,InfoDaoInterface IInfoDao) throws DaoException {
+    private static void FindAllGameInfo(List<Game_Information> gameList,InfoDaoInterface IInfoDao) throws DaoException {
         //Function 1 – Get all Entities
-        System.out.println("\n Call FindAllGameInfo()");
-        System.out.println(IInfoDao.findAllGames()+"\n");
-
+         gameList = IInfoDao.findAllGames();
+        printInfo(gameList);
     }
 
     private static void FindGameByID(InfoDaoInterface IInfoDao, Scanner in) throws DaoException {
@@ -154,4 +170,5 @@ public class App {
                 System.out.println("Game: " + Game.toString());
         }
     }
+
 }

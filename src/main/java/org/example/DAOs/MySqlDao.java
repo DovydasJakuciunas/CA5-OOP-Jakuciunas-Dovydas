@@ -2,13 +2,14 @@ package org.example.DAOs;
 
 
 
+import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class MySqlDao
+public abstract class MySqlDao
 {
     public Connection getConnection() throws DaoException
     {
@@ -52,4 +53,7 @@ public class MySqlDao
             System.exit(1);
         }
     }
+
+    //int GameId, String Game_name, String Game_console, String Game_publisher, String Game_developer, String Game_franchise, String Game_releasedate, boolean Multiplayer, int Player_amount, int Review_Score
+
 }
