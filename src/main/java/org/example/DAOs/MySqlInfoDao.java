@@ -202,5 +202,45 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 
     }
 
+    @Override
+    public Game_Information updateGameById(int id, Game_Information game) throws DaoException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        int rowsUpdated = 0;
+
+        try{
+            connection = getConnection();
+            String query = "update gameinformation set  GAME_NAME = ?, GAME_CONSOLE =?, GAME_PUBLISHER=?,GAME_DEVELOPER = ?,GAME_FRANCHISE = ?,MULTIPLAYER = ?, PLAYER_AMOUNT = ?,REVIEW_SCORE = ? where GAMEID=?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, game.getGame_name());
+            preparedStatement.setString(2,game.getGame_console());
+            preparedStatement.setString(3, game.getGame_publisher());
+            preparedStatement.setString(4, game.getGame_developer());
+            preparedStatement.setString(5, game.getGame_franchise());
+            preparedStatement.setString(6, game.getGame_releasedate());
+            preparedStatement.setBoolean(7,game.isMultiplayer());
+            preparedStatement.setInt(8,game.getPlayer_amount());
+            preparedStatement.setInt(9,game.getReview_Score());
+            rowsUpdated = preparedStatement.executeUpdate();
+        }catch (SQLException e) {
+            throw new DaoException("Update Game Information failed " + e.getMessage());
+        } finally {
+
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        return game;
+    }
+
 
 }

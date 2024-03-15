@@ -89,6 +89,7 @@ public class App {
         System.out.println("Game ID ");
         int gameIdIn = in.nextInt();
 
+
         System.out.println("Game Name ");
         String gameNameIn = in.next();
 
@@ -117,6 +118,7 @@ public class App {
         int reviewIn = in.nextInt();
 
         Game_Information rowsUpdated = IInfoDao.registerGame(gameIdIn,gameNameIn,gameConsoleIn,gamePubIn,gameDevIn,gameFraIn,gameDateIn,multiIn,playerIn,reviewIn);
+
     }
 
     private static void DeleteGameByID(InfoDaoInterface IInfoDao, List<Game_Information> gameInfo, Scanner in) throws DaoException {
@@ -132,8 +134,8 @@ public class App {
     private static void FindAllGameInfo(List<Game_Information> gameInfo,InfoDaoInterface IInfoDao) throws DaoException {
         //Function 1 – Get all Entities
         System.out.println("\n Call FindAllGameInfo()");
-        System.out.println(IInfoDao.findAllGames());
-        printInfo(gameInfo);
+        System.out.println(IInfoDao.findAllGames()+"\n");
+
     }
 
     private static void FindGameByID(InfoDaoInterface IInfoDao, Scanner in) throws DaoException {
