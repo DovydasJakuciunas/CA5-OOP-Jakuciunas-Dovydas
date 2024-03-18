@@ -5,7 +5,9 @@ import org.example.Exceptions.DaoException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 {
@@ -203,7 +205,7 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
     }
 
     @Override
-    public Game_Information updateGameById(int id, Game_Information game) throws DaoException {
+    public Game_Information updateGameById(int id, Game_Information gameInfo) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -215,11 +217,8 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 
 
             preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,game.getGameId());
-            preparedStatement.setBoolean(2,game.isMultiplayer());
-
-
-
+            preparedStatement.setInt(1,gameInfo.getGameId());
+            preparedStatement.setBoolean(2,gameInfo.isMultiplayer());
 
         }
         catch (SQLException e) {
@@ -243,7 +242,7 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         }
 
 
-        return game;
+        return gameInfo;
     }
 
     @Override
@@ -289,10 +288,37 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return newId;
     }
 
-    public void findGameId() throws DaoException{
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+    //AUTHOR EOIN HAMILL WROTE THE METHOD
+    public List<Game_Information> gameInformationBasedOnName(Comparator<Game_Information> gamenameComparator) throws SQLException{
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter Name You would like to filter by");
+        String filter=kb.next();
+        DAO dao =DAO.getInstance();
+        Connection connection = getConnection();
+        List<Game_Information> game =new ArrayList();
+        Statement state = connection.createStatement();
+        ResultSet result = state.executeQuery("SELECT * from gameinformation");
+
+        while(result.next())
+        {
+            Game_Information addinggame = new Game_Information();
+            addinggame.setGameId(result.getInt("GameId"));
+            addinggame.setGame_name(result.getString("Game_name"));
+            addinggame.setGame_console(result.getString("Game_console"));
+            addinggame.setGame_developer(result.getString("Game_developer"));
+            addinggame.setGame_franchise(result.getString("Game_developer"));
+            addinggame.setGame_releasedate(result.getString("Game_releasedate"));
+            addinggame.setMultiplayer(result.getBoolean("Multiplayer"));
+            addinggame.setPlayer_amount(result.getInt("Player_amount"));
+            addinggame.setReview_Score(result.getInt("Review_Score"));
 
 
+
+
+
+        }
+        connection.close();
+        return game;
     }
+
 }

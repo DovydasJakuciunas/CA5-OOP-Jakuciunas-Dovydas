@@ -6,6 +6,7 @@ import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
 
 import java.sql.SQLOutput;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,7 +40,6 @@ public class App {
     }
 
     private static void ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao, List<Game_Information> gameList, Game_Information game) throws DaoException {
-
         if (usersChoice == 1){
             FindAllGameInfo(gameList,IInfoDao);
 
@@ -61,13 +61,20 @@ public class App {
         else if (usersChoice ==5 ){
             System.out.println("What's the ID of the game you'd like to update:");
             int Id = in.nextInt();
-            IInfoDao.updateGameById(1,game);
             if (Id == 1)
             {
-                game.setMultiplayer(true);
+                game.setGame_name("Fallout 3");
             }
+            IInfoDao.updateGameById(1, game);
+
 
         }
+        if(usersChoice==6)
+        {
+            Comparator<Game_Information> gamenameComparator = Comparator.comparing(Game_Information::getGame_name);
+
+        }
+
         else if (usersChoice == 0) {
             System.exit(0);
         }
@@ -156,43 +163,7 @@ public class App {
 
     }
 
-    //Function 5
-    private static void updateGameInfo(int id, Game_Information game) {
-        Scanner kb = new Scanner(System.in);
-        String userChange;      boolean userBoolChange;     int userPlayerChange;
 
-        if (id==1)
-        {
-            System.out.println("Which variable would you like to Update");
-            System.out.print("1. Game Console\n2. Multiplayer\n3. Player Amount \n4. Review Score\n");
-            int choice = kb.nextInt();
-            if (choice ==1) {
-                System.out.println(game.getGame_name()+" :What Console can I play at");
-                userChange = kb.nextLine();
-
-            }
-            else if (choice == 2){
-                System.out.println(game.getGame_name()+" :Did it change the Multiplayer (True or False)");
-                userBoolChange = kb.nextBoolean();
-                game.setMultiplayer(userBoolChange);
-            }
-            else if (choice ==3) {
-                System.out.println(game.getGame_name()+ " :How much did the player base change");
-                userPlayerChange = kb.nextInt();
-                game.setPlayer_amount(userPlayerChange);
-            }
-            else {
-                System.out.println("That option isn't available");
-            }
-        }
-        else
-        {
-            System.out.println("Game doesn't exist within the database!!!");
-        }
-
-
-
-    }
 
     private static void printInfo(List<Game_Information> gameInfo) {
         if( gameInfo.isEmpty() )
