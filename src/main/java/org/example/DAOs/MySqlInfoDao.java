@@ -289,36 +289,54 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
     }
 
     //AUTHOR EOIN HAMILL WROTE THE METHOD
-    public List<Game_Information> gameInformationBasedOnName(Comparator<Game_Information> gamenameComparator) throws SQLException{
-        Scanner kb = new Scanner(System.in);
-        System.out.println("Enter Name You would like to filter by");
-        String filter=kb.next();
-        DAO dao =DAO.getInstance();
-        Connection connection = getConnection();
-        List<Game_Information> game =new ArrayList();
-        Statement state = connection.createStatement();
-        ResultSet result = state.executeQuery("SELECT * from gameinformation");
+    @Override
+    public List<Game_Information> FindGameUsingFilter(Comparator<Game_Information> gameNameComparator) throws SQLException {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+        List<Game_Information> gameInfoList = new ArrayList<>();
 
-        while(result.next())
-        {
-            Game_Information addinggame = new Game_Information();
-            addinggame.setGameId(result.getInt("GameId"));
-            addinggame.setGame_name(result.getString("Game_name"));
-            addinggame.setGame_console(result.getString("Game_console"));
-            addinggame.setGame_developer(result.getString("Game_developer"));
-            addinggame.setGame_franchise(result.getString("Game_developer"));
-            addinggame.setGame_releasedate(result.getString("Game_releasedate"));
-            addinggame.setMultiplayer(result.getBoolean("Multiplayer"));
-            addinggame.setPlayer_amount(result.getInt("Player_amount"));
-            addinggame.setReview_Score(result.getInt("Review_Score"));
+        try{
+            connection = this.getConnection();
 
+            String query = "SELECT * FROM gameinformation where GAME_CONSOLE = ?";
+            ps = connection.prepareStatement(query);
 
-
-
-
+            resultSet = ps.executeQuery();
+            while (resultSet.next())
+            {
+                int gameId = resultSet.getInt("GameID");
+                String gameName = resultSet.getString("Game_Name");
+                String gameCon = resultSet.getString("Game_Console");
+                String gamePub = resultSet.getString("Game_Publisher");
+                String gameDev = resultSet.getString("Game_Developer");
+                String gameFra = resultSet.getString("Game_Franchise");
+                String releaseDate = resultSet.getString("Game_releaseDate");
+                boolean multiplayer = resultSet.getBoolean("Multiplayer");
+                int playerAmount = resultSet.getInt("Player_Amount");
+                int reviewScore = resultSet.getInt("Review_Score");
+                Game_Information gI = new Game_Information(gameId,gameName,gameCon,gamePub,gameDev,gameFra,releaseDate,multiplayer,playerAmount,reviewScore);
+                gameInfoList.add(gI);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("findGameUsingFilter() " + e.getMessage());
+        }finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    freeConnection(connection);
+                }
+            } catch (SQLException e) {
+                throw new DaoException("findGameUsingFilter() " + e.getMessage());
+            }
         }
-        connection.close();
-        return game;
+
+        return gameInfoList;
     }
 
 }

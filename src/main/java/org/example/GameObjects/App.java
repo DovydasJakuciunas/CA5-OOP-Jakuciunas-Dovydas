@@ -27,6 +27,7 @@ public class App {
 
             int usersChoice = in.nextInt();
 
+
             while( usersChoice != 0)
             {
                 ShowMenu();
@@ -71,7 +72,9 @@ public class App {
         }
         if(usersChoice==6)
         {
-            Comparator<Game_Information> gamenameComparator = Comparator.comparing(Game_Information::getGame_name);
+            System.out.println("What's the console for your game?");
+            String filter = in.nextLine();
+
 
         }
 
@@ -162,6 +165,13 @@ public class App {
         return IInfoDao.registerGame(gameInfo);
 
     }
+    //Function 5
+
+    //Function 6
+    private static void FindGameUsingFilter(Comparator gameNameComparator) throws DaoException{
+
+    }
+
 
 
 

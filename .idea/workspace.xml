@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Attempted Function 5.&#10;&#10;Fixing it atm.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/InfoDaoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/InfoDaoInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" afterDir="false" />
     </list>
@@ -36,13 +38,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/dovyj/Downloads/PROGRAMMINGCA5GROUPPROJECT-master"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example.DAOs" />
@@ -174,16 +177,5 @@
     <MESSAGE value="Update Function 4.&#10;&#10;Made it match the requirements" />
     <MESSAGE value="Attempted Function 5.&#10;&#10;Fixing it atm." />
     <option name="LAST_COMMIT_MESSAGE" value="Attempted Function 5.&#10;&#10;Fixing it atm." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
