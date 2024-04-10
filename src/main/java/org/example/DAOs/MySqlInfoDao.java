@@ -360,5 +360,13 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return gameInfoJson;
 
     }
+    //Function 8 -- Single Game to Json
+    @Override
+    public String singleGameToJson(Game_Information game) throws DaoException {
+
+
+        return null;
+    }
+
 
 }
