@@ -72,7 +72,7 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         try{
             connection = this.getConnection();
 
-            String query = "SELECT * FROM gameinformation WHERE GAMEID = 10 ";
+            String query = "SELECT * FROM gameinformation WHERE GAMEID = ? ";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
 
@@ -350,14 +350,15 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return gameInfoList;
     }
 
-    //FUNCTION 7
+    //FUNCTION 7  -- GameList to Json
+    //AUTHOR EOIN HAMILL WROTE THIS ENTIRE METHOD
     @Override
-    public String playerListToJson(List<Game_Information> list) throws DaoException
+    public String gameListToJson(List<Game_Information> list) throws DaoException
     {
-        Gson gson = new Gson();
+        Gson gsonParser = new Gson();
+        String gameInfoJson = gsonParser.toJson(list);
+        return gameInfoJson;
 
-
-        return null;
     }
 
 }

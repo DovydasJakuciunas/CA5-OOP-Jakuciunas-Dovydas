@@ -20,5 +20,5 @@ public interface InfoDaoInterface {
     public int GenerateId() throws DaoException;
     public List<Game_Information> FindGameUsingFilter(Comparator<Game_Information> gameNameComparator) throws SQLException;
 
-    public String playerListToJson(List<Game_Information> list) throws DaoException;
+    public String gameListToJson(List<Game_Information> list) throws DaoException;
 }

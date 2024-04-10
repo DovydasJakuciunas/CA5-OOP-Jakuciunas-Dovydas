@@ -6,7 +6,9 @@ import org.example.DAOs.MySqlInfoDao;
 import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
 
+
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -80,7 +82,10 @@ public class App {
 
         }
         if (usersChoice == 7) {
-            printInfo(gameList);
+
+            GameListToJson(IInfoDao, gameList);
+
+
         }
 
         else if (usersChoice == 0) {
@@ -90,16 +95,18 @@ public class App {
 
 
 
-
     private static void ShowMenu()
     {
+        System.out.println("***********************************************************");
         System.out.println("1. Find all games within the index");
         System.out.println("2. Find game by ID");
         System.out.println("3. Delete game by ID");
         System.out.println("4. Register a new game");
         System.out.println("5. Update Game Info By Id");
         System.out.println("6. Find Game Using Filter");
+        System.out.println("7. Convert Game List to JSON");
         System.out.println("0. Exit - The Whole Program");
+        System.out.println("***********************************************************");
 
 
     }
@@ -180,6 +187,14 @@ public class App {
     private static void FindGameUsingFilterName(InfoDaoInterface IInfoDao) throws SQLException {
         Comparator<Game_Information> gameNameComparator = Comparator.comparing(Game_Information::getGame_name);
         System.out.println(IInfoDao.FindGameUsingFilter(gameNameComparator));
+    }
+    //Function 7
+    private static void GameListToJson(InfoDaoInterface IInfoDao, List<Game_Information> gameList) throws DaoException {
+        System.out.println("Before Conversion");
+        printInfo(gameList);
+
+        System.out.printf("\nAfter Conversion\n");
+        System.out.println(IInfoDao.gameListToJson(gameList));
     }
 
 
