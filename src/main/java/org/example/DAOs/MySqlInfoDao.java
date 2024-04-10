@@ -71,7 +71,7 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         try{
             connection = this.getConnection();
 
-            String query = "SELECT * FROM gameinformation WHERE GAMEID = ? ";
+            String query = "SELECT * FROM gameinformation WHERE GAMEID = 10 ";
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
 
@@ -295,12 +295,17 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         PreparedStatement ps = null;
         ResultSet resultSet = null;
         List<Game_Information> gameInfoList = new ArrayList<>();
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Enter the Name of the game you want to find");
+        String filter = kb.nextLine();
 
         try{
-            connection = this.getConnection();
 
-            String query = "SELECT * FROM gameinformation where GAME_CONSOLE = ?";
+            connection = this.getConnection();
+            String query = "SELECT * FROM gameinformation " ;
             ps = connection.prepareStatement(query);
+
+
 
             resultSet = ps.executeQuery();
             while (resultSet.next())
@@ -316,7 +321,11 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
                 int playerAmount = resultSet.getInt("Player_Amount");
                 int reviewScore = resultSet.getInt("Review_Score");
                 Game_Information gI = new Game_Information(gameId,gameName,gameCon,gamePub,gameDev,gameFra,releaseDate,multiplayer,playerAmount,reviewScore);
-                gameInfoList.add(gI);
+                if (gameName.equals(filter))
+                {
+                    System.out.println("Game Found: " + gI);
+                }
+
             }
         } catch (SQLException e) {
             throw new DaoException("findGameUsingFilter() " + e.getMessage());
@@ -338,5 +347,6 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 
         return gameInfoList;
     }
+
 
 }

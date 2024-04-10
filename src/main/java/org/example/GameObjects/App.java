@@ -1,11 +1,13 @@
 package org.example.GameObjects;
 
 import org.example.DAOs.InfoDaoInterface;
+import org.example.DAOs.MySqlDao;
 import org.example.DAOs.MySqlInfoDao;
 import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
+import org.example.Extras.GameNameComparator;
 
-import java.sql.SQLOutput;
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -37,10 +39,12 @@ public class App {
 
         } catch (DaoException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private static void ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao, List<Game_Information> gameList, Game_Information game) throws DaoException {
+    private static void ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao, List<Game_Information> gameList, Game_Information game) throws SQLException {
         if (usersChoice == 1){
             FindAllGameInfo(gameList,IInfoDao);
 
@@ -72,9 +76,8 @@ public class App {
         }
         if(usersChoice==6)
         {
-            System.out.println("What's the console for your game?");
-            String filter = in.nextLine();
 
+            FindGameUsingFilterName(IInfoDao);
 
         }
 
@@ -83,6 +86,9 @@ public class App {
         }
     }
 
+
+
+
     private static void ShowMenu()
     {
         System.out.println("1. Find all games within the index");
@@ -90,6 +96,7 @@ public class App {
         System.out.println("3. Delete game by ID");
         System.out.println("4. Register a new game");
         System.out.println("5. Update Game Info By Id");
+        System.out.println("6. Find Game Using Filter");
         System.out.println("0. Exit - The Whole Program");
 
 
@@ -168,8 +175,9 @@ public class App {
     //Function 5
 
     //Function 6
-    private static void FindGameUsingFilter(Comparator gameNameComparator) throws DaoException{
-
+    private static void FindGameUsingFilterName(InfoDaoInterface IInfoDao) throws SQLException {
+        Comparator<Game_Information> gameNameComparator = Comparator.comparing(Game_Information::getGame_name);
+        System.out.println(IInfoDao.FindGameUsingFilter(gameNameComparator));
     }
 
 

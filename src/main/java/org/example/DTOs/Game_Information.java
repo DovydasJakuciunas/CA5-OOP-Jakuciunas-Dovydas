@@ -17,6 +17,7 @@ public class Game_Information
     public Game_Information() {
     }
 
+
     //Full Con
 
     public Game_Information(int gameId, String game_name, String game_console, String game_publisher, String game_developer, String game_franchise, String game_releasedate, boolean multiplayer, int player_amount, int review_Score) {

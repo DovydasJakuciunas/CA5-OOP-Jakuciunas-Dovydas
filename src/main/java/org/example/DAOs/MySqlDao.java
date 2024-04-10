@@ -54,6 +54,5 @@ public abstract class MySqlDao
         }
     }
 
-    //int GameId, String Game_name, String Game_console, String Game_publisher, String Game_developer, String Game_franchise, String Game_releasedate, boolean Multiplayer, int Player_amount, int Review_Score
 
 }
