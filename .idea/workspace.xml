@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Setting up Function 8.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" afterDir="false" />
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Completed Function 8 Json Code.">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712739739956</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Completed Function 8 Json Code.">
+      <created>1712740080471</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1712740080471</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +226,7 @@
     <MESSAGE value="Setting up Function 7.&#10;&#10;Using Eoin as a Reference" />
     <MESSAGE value="Finished Function 7. &#10;&#10;Copied EOIN HAMILL solution for function 7" />
     <MESSAGE value="Setting up Function 8." />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting up Function 8." />
+    <MESSAGE value="Completed Function 8 Json Code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Function 8 Json Code." />
   </component>
 </project>

@@ -72,22 +72,23 @@ public class App {
                 game.setGame_name("Fallout 3");
             }
             IInfoDao.updateGameById(1, game);
-
-
         }
-        if(usersChoice==6)
+        else if(usersChoice==6)
         {
-
             FindGameUsingFilterName(IInfoDao);
-
         }
-        if (usersChoice == 7) {
-
+        else if (usersChoice == 7)
+        {
             GameListToJson(IInfoDao, gameList);
-
-
         }
-
+        else if (usersChoice == 8)
+        {
+            System.out.println("Enter the Id you want to find:");
+            int id = in.nextInt();
+            Game_Information gameJson = IInfoDao.findGameById(id);
+            String singleGameJson = IInfoDao.singleGameToJson(gameJson);
+            System.out.println(singleGameJson);
+        }
         else if (usersChoice == 0) {
             System.exit(0);
         }
@@ -105,6 +106,7 @@ public class App {
         System.out.println("5. Update Game Info By Id");
         System.out.println("6. Find Game Using Filter");
         System.out.println("7. Convert Game List to JSON");
+        System.out.println("8. Convert Single Game to JSON");
         System.out.println("0. Exit - The Whole Program");
         System.out.println("***********************************************************");
 
