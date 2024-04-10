@@ -5,7 +5,6 @@ import org.example.DAOs.MySqlDao;
 import org.example.DAOs.MySqlInfoDao;
 import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
-import org.example.Extras.GameNameComparator;
 
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -79,6 +78,9 @@ public class App {
 
             FindGameUsingFilterName(IInfoDao);
 
+        }
+        if (usersChoice == 7) {
+            printInfo(gameList);
         }
 
         else if (usersChoice == 0) {

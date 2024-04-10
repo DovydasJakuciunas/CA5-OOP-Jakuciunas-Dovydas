@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Attempting to Fix 6.&#10;&#10;Copied From Eoin but had to make my own. Used his as reference.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Extras/GameNameComparator.java" afterDir="false" />
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Finished Function 6&#10;&#10;Moving onto Function 7 and 8">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/InfoDaoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/InfoDaoInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAOs/MySqlInfoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DTOs/Game_Information.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DTOs/Game_Information.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Extras/GameNameComparator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GameObjects/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712569816238</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Finished Function 6&#10;&#10;Moving onto Function 7 and 8">
+      <created>1712738066704</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712738066704</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +199,7 @@
     <MESSAGE value="Update Function 4.&#10;&#10;Made it match the requirements" />
     <MESSAGE value="Attempted Function 5.&#10;&#10;Fixing it atm." />
     <MESSAGE value="Attempting to Fix 6.&#10;&#10;Copied From Eoin but had to make my own. Used his as reference." />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempting to Fix 6.&#10;&#10;Copied From Eoin but had to make my own. Used his as reference." />
+    <MESSAGE value="Finished Function 6&#10;&#10;Moving onto Function 7 and 8" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Function 6&#10;&#10;Moving onto Function 7 and 8" />
   </component>
 </project>

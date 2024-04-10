@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import com.google.gson.Gson;
 
 public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
 {
@@ -288,7 +289,8 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return newId;
     }
 
-    //AUTHOR EOIN HAMILL WROTE THE METHOD
+    //FUNCTION 6
+    //AUTHOR EOIN HAMILL WROTE THIS ENTIRE METHOD
     @Override
     public List<Game_Information> FindGameUsingFilter(Comparator<Game_Information> gameNameComparator) throws SQLException {
         Connection connection = null;
@@ -348,5 +350,14 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return gameInfoList;
     }
 
+    //FUNCTION 7
+    @Override
+    public String playerListToJson(List<Game_Information> list) throws DaoException
+    {
+        Gson gson = new Gson();
+
+
+        return null;
+    }
 
 }
