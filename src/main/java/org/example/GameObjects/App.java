@@ -28,7 +28,7 @@ public class App {
             System.out.println("For guiding within the index. Numbers 1 - ?? , 0 is exit");
             System.out.println("How many I help you today");
 
-            int usersChoice = in.nextInt();
+            int usersChoice = -1;
 
 
             while( usersChoice != 0)
