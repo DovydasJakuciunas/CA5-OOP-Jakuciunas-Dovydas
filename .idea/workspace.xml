@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Finished Server Side Code. &#10;&#10;Used EOIN HAMILL as reference. Put Json into its own class.">
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Used EOIN HAMILLS Code for Client.&#10;&#10;Getting error: Client message: IOException: java.net.SocketException: Connection reset.&#10;Attempting to fix it.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713118919100</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Used EOIN HAMILLS Code for Client.&#10;&#10;Getting error: Client message: IOException: java.net.SocketException: Connection reset.&#10;Attempting to fix it.">
+      <option name="closed" value="true" />
+      <created>1713128944277</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1713128944277</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +296,7 @@
     <MESSAGE value="Setup Server-Client Classes." />
     <MESSAGE value="Setting up Run() class in Server class." />
     <MESSAGE value="Finished Server Side Code. &#10;&#10;Used EOIN HAMILL as reference. Put Json into its own class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Server Side Code. &#10;&#10;Used EOIN HAMILL as reference. Put Json into its own class." />
+    <MESSAGE value="Used EOIN HAMILLS Code for Client.&#10;&#10;Getting error: Client message: IOException: java.net.SocketException: Connection reset.&#10;Attempting to fix it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Used EOIN HAMILLS Code for Client.&#10;&#10;Getting error: Client message: IOException: java.net.SocketException: Connection reset.&#10;Attempting to fix it." />
   </component>
 </project>

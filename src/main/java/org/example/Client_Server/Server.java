@@ -12,9 +12,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 
 public class Server {
-    
+
     final int SERVER_PORT = 8888;
 
     public static void main(String[] args) {
@@ -43,10 +44,28 @@ public class Server {
 
                 Thread t = new Thread(new ClientHandler(clientSocket, clientNumber));
                 t.start();
+
+                System.out.println("Server: ClientHandler started in " + t.getName() + " for client " + clientNumber + ". ");
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
+        finally{
+            try {
+                if(clientSocket!=null)
+                    clientSocket.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            try {
+                if(serverSocket!=null)
+                    serverSocket.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+
+        }
+        System.out.println("Server Disconnecting!!!!");
     }
 
     class ClientHandler implements Runnable{
@@ -56,7 +75,7 @@ public class Server {
         final int clientNumber;
 
         ClientHandler(Socket clientSocket, int clientNumber) {
-            this.clientSocket = this.clientSocket;  // store socket for closing later
+            this.clientSocket = clientSocket;  // store socket for closing later
             this.clientNumber = clientNumber;  // ID number that we are assigning to this client
 
             try{
@@ -73,6 +92,8 @@ public class Server {
         @Override
         public void run() {
             String request;
+            MySqlInfoDao infoDao =  new MySqlInfoDao();
+            Game_Information gameJson = null;
             try{
                 while((request = socketReader.readLine()) != null)
                 {
@@ -81,25 +102,26 @@ public class Server {
                     //If client wants command 1 runs this etc...
                     if (request.equals("1"))
                     {
-                        MySqlInfoDao infoDao =  new MySqlInfoDao();
-                        Game_Information gameJson = infoDao.findGameById(3);
+
+                        gameJson = infoDao.findGameById(3);
                         String gameListJSON = Json.singleGameToJson(gameJson);
                         socketWriter.println(gameListJSON);
                         System.out.println("Server message: JSON sent to client.");
+                    }
+                    else if (request.equals("2"))
+                    {
+
                     }
                     else {
                         socketWriter.println("Error: invalid input!!!");
                         System.out.println("Your request "+ request+": Can't be fulfilled");
                     }
                 }
-            }  catch (DaoException ex)
-            {
-                throw new RuntimeException(ex);
-            } catch (IOException ex) {
+            }  catch (IOException ex) {
                 ex.printStackTrace();
-            }
-            finally
-            {
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
                 this.socketWriter.close();
                 try {
                     this.socketReader.close();
