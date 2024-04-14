@@ -61,6 +61,16 @@ public class Client
                     System.out.println("Your game is " + game);
                 }
                 else if(userRequest.equals("2")){
+                    String JsonGameId = in.readLine();
+
+                    try {
+                        Type collectionClient = new TypeToken<Collection<Game_Information>>(){}.getType();
+                        Collection<Game_Information> game = gsonParser.fromJson(JsonGameId, collectionClient);
+                        System.out.println(game);
+                    } catch (JsonSyntaxException e) {
+                        throw new RuntimeException(e);
+                    }
+
 
                 }
                 else
