@@ -1,14 +1,13 @@
 package org.example.GameObjects;
 
 import org.example.DAOs.InfoDaoInterface;
-import org.example.DAOs.MySqlDao;
 import org.example.DAOs.MySqlInfoDao;
 import org.example.DTOs.Game_Information;
 import org.example.Exceptions.DaoException;
+import org.example.JSonConverter.Json;
 
 
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -19,6 +18,7 @@ public class App {
         InfoDaoInterface IInfoDao = new MySqlInfoDao();
         List<Game_Information> gameList = IInfoDao.findAllGames();
         Game_Information game = new Game_Information();
+        Json jsonConvert = new Json();
 
 
         Scanner in = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class App {
             {
                 ShowMenu();
                 usersChoice = in.nextInt();
-                ChosenOption(usersChoice, in,IInfoDao,gameList,game);
+                ChosenOption(usersChoice, in,IInfoDao,gameList,game, jsonConvert);
             }
 
         } catch (DaoException e) {
@@ -45,7 +45,7 @@ public class App {
         }
     }
 
-    private static void ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao, List<Game_Information> gameList, Game_Information game) throws SQLException {
+    private static void ChosenOption(int usersChoice, Scanner in, InfoDaoInterface IInfoDao, List<Game_Information> gameList, Game_Information game, Json jsonConvert) throws SQLException {
         if (usersChoice == 1){
             FindAllGameInfo(gameList,IInfoDao);
 
@@ -79,21 +79,24 @@ public class App {
         }
         else if (usersChoice == 7)
         {
-            GameListToJson(IInfoDao, gameList);
+            GameListToJson(IInfoDao, gameList, jsonConvert);
         }
         else if (usersChoice == 8)
         {
-            System.out.println("Enter the Id you want to find:");
-            int id = in.nextInt();
-            Game_Information gameJson = IInfoDao.findGameById(id);
-            String singleGameJson = IInfoDao.singleGameToJson(gameJson);
-            System.out.println(singleGameJson);
+            SingleGameToJson(in, IInfoDao, jsonConvert);
         }
         else if (usersChoice == 0) {
             System.exit(0);
         }
     }
 
+    private static void SingleGameToJson(Scanner in, InfoDaoInterface IInfoDao, Json jsonConvert) throws DaoException {
+        System.out.println("Enter the Id you want to find:");
+        int id = in.nextInt();
+        Game_Information gameJson = IInfoDao.findGameById(id);
+        String singleGameJson = jsonConvert.singleGameToJson(gameJson);
+        System.out.println(singleGameJson);
+    }
 
 
     private static void ShowMenu()
@@ -191,12 +194,13 @@ public class App {
         System.out.println(IInfoDao.FindGameUsingFilter(gameNameComparator));
     }
     //Function 7
-    private static void GameListToJson(InfoDaoInterface IInfoDao, List<Game_Information> gameList) throws DaoException {
+    private static void GameListToJson(InfoDaoInterface IInfoDao, List<Game_Information> gameList, Json jsonConvert) throws DaoException {
         System.out.println("Before Conversion");
         printInfo(gameList);
 
         System.out.printf("\nAfter Conversion\n");
-        System.out.println(IInfoDao.gameListToJson(gameList));
+
+        System.out.println(jsonConvert.gameListToJson(gameList));
     }
 
 

@@ -350,24 +350,7 @@ public class MySqlInfoDao extends MySqlDao implements InfoDaoInterface
         return gameInfoList;
     }
 
-    //FUNCTION 7  -- GameList to Json
-    //USED EOIN HAMILL AS A REFERENCE
-    @Override
-    public String gameListToJson(List<Game_Information> list) throws DaoException
-    {
-        Gson gsonParser = new Gson();
-        String gameInfoJson = gsonParser.toJson(list);
-        return gameInfoJson;
 
-    }
-    //Function 8 -- Single Game to Json
-    //USED EOIN HAMILL AS A REFERENCE
-    @Override
-    public String singleGameToJson(Game_Information game) throws DaoException {
-        Gson gsonParser = new Gson();
-        String gameInfoJson = gsonParser.toJson(game);
-        return gameInfoJson;
-    }
 
 
 }
