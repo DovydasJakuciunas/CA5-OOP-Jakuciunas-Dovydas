@@ -10,7 +10,7 @@ public class Json {
     //FUNCTION 7  -- GameList to Json
     //USED EOIN HAMILL AS A REFERENCE
 
-    public String gameListToJson(List<Game_Information> list) throws DaoException
+    public static String gameListToJson(List<Game_Information> list) throws DaoException
     {
         Gson gsonParser = new Gson();
         String gameInfoJson = gsonParser.toJson(list);

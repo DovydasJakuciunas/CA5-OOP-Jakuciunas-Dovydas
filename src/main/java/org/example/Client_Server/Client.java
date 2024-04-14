@@ -2,14 +2,17 @@ package org.example.Client_Server;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import org.example.DTOs.Game_Information;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Client
@@ -46,7 +49,7 @@ public class Client
                 if (userRequest.equals("1")) {
                     String JsonGameId = in.readLine();  // gets response from server and then we get JSON and put it into the string
                     //We then convert this JSON to a gameinfo object
-                    System.out.println("Client message: Response from server after \"1\" request: " + JsonGameId);
+                    //System.out.println("Client message: Response from server after \"1\" request: " + JsonGameId);
                     Game_Information game = null;
                     //Parsing the JSON string into a gameInformation object.
                     try {
@@ -58,7 +61,7 @@ public class Client
                     System.out.println("Your game is " + game);
                 }
                 else if(userRequest.equals("2")){
-                    System.out.println("Hello");
+
                 }
                 else
                 {

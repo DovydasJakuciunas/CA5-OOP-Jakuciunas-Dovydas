@@ -5,6 +5,7 @@ import org.example.DAOs.MySqlInfoDao;
 import org.example.DTOs.Game_Information;
 import org.example.JSonConverter.Json;
 import org.example.Exceptions.DaoException;
+import org.ietf.jgss.GSSManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
+import java.util.List;
 
 public class Server {
 
@@ -94,6 +96,8 @@ public class Server {
             String request;
             MySqlInfoDao infoDao =  new MySqlInfoDao();
             Game_Information gameJson = null;
+            List<Game_Information> gameList;
+            String gameListJSON;
             try{
                 while((request = socketReader.readLine()) != null)
                 {
@@ -104,13 +108,16 @@ public class Server {
                     {
 
                         gameJson = infoDao.findGameById(3);
-                        String gameListJSON = Json.singleGameToJson(gameJson);
+                        gameListJSON = Json.singleGameToJson(gameJson);
                         socketWriter.println(gameListJSON);
                         System.out.println("Server message: JSON sent to client.");
                     }
                     else if (request.equals("2"))
                     {
-
+                         gameList = infoDao.findAllGames();
+                         gameListJSON = Json.gameListToJson(gameList);
+                         socketWriter.println(gameListJSON);
+                        System.out.println("Server message: Send Find all Entities in Database to Client");
                     }
                     else {
                         socketWriter.println("Error: invalid input!!!");
