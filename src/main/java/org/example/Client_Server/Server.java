@@ -15,6 +15,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
+
+import static java.lang.System.in;
 
 public class Server {
 
@@ -124,7 +127,12 @@ public class Server {
                     }
                     else if (request.equals("4"))
                     {
-
+                        Scanner in = new Scanner(System.in);
+                        int deleteId = in.nextInt();
+                        infoDao.deleteGameById(deleteId);
+                        gameList = infoDao.findAllGames();
+                        gameListJSON = Json.gameListToJson(gameList);
+                        socketWriter.println(gameListJSON);
                     }
                     else {
                         socketWriter.println("Error: invalid input!!!");

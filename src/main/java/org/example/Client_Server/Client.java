@@ -63,9 +63,9 @@ public class Client
                 else if(userRequest.equals("2")){
                     String JsonGameId = in.readLine();
 
-                    try {
-                        Type collectionClient = new TypeToken<Collection<Game_Information>>(){}.getType();
-                        Collection<Game_Information> game = gsonParser.fromJson(JsonGameId, collectionClient);
+                    try {        //We get an array of objects instead of 1 object.
+                        Type collectionClient = new TypeToken<Collection<Game_Information>>(){}.getType();      //Created type object of Game_Information Collections- Making the empty variable a base of Game_Information
+                        Collection<Game_Information> game = gsonParser.fromJson(JsonGameId, collectionClient);  //Filling in the Collection with allocated variables from the server
                         System.out.println(game);
                     } catch (JsonSyntaxException e) {
                         throw new RuntimeException(e);
@@ -77,6 +77,17 @@ public class Client
 
                 }
                 else if (userRequest.equals("4")){
+                    String JsonGameId = in.readLine();
+                    System.out.println("What game would you like to DELETE: ");
+
+                    try {
+                        Type collectionClient = new TypeToken<Collection<Game_Information>>(){}.getType();
+                        Collection<Game_Information> game = gsonParser.fromJson(JsonGameId, collectionClient);
+                        System.out.println(game);
+                    }
+                    catch (JsonSyntaxException ex) {
+                        System.out.println("Jason syntax error encountered. " + ex);
+                    }
 
                 }
                 else
