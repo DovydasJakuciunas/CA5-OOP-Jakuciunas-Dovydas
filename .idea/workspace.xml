@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Wrote Code to fill up Server and Client Side of Function 12">
+    <list default="true" id="5fa5cf76-7250-4e2f-a754-e26a03314d66" name="Changes" comment="Fixing Code on both Client and Server side.&#10;&#10;Used https://stackoverflow.com/questions/28247708/java-io-server-client-read-and-process-users-input as a reference online for help.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client_Server/Server.java" afterDir="false" />
@@ -301,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713261885896</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixing Code on both Client and Server side.&#10;&#10;Used https://stackoverflow.com/questions/28247708/java-io-server-client-read-and-process-users-input as a reference online for help.">
+      <option name="closed" value="true" />
+      <created>1713263148569</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1713263148569</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -316,7 +324,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Set up First Function 1.&#10;&#10;Yet to see if the code connects to database" />
     <MESSAGE value="Got Connection Code Done.&#10;Attempting to Fix it" />
     <MESSAGE value="Connecting to database. Onto Function 2" />
     <MESSAGE value="Completed Function 2 and 3. &#10;&#10;Used previous works as exampled." />
@@ -341,6 +348,7 @@
     <MESSAGE value="Finished Writing Client Side for Function 10." />
     <MESSAGE value="Setting up Function 12." />
     <MESSAGE value="Wrote Code to fill up Server and Client Side of Function 12" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrote Code to fill up Server and Client Side of Function 12" />
+    <MESSAGE value="Fixing Code on both Client and Server side.&#10;&#10;Used https://stackoverflow.com/questions/28247708/java-io-server-client-read-and-process-users-input as a reference online for help." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Code on both Client and Server side.&#10;&#10;Used https://stackoverflow.com/questions/28247708/java-io-server-client-read-and-process-users-input as a reference online for help." />
   </component>
 </project>

@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import static java.lang.System.in;
 
@@ -124,10 +125,12 @@ public class Server {
                     }
                     else if (request.equals("4"))
                     {
-                        InputStream inputFromClient = clientSocket.getInputStream();
-                        Scanner scanner = new Scanner(inputFromClient);
-                        int deleteId = 0;
-                        infoDao.deleteGameById(deleteId);
+                        InputStream  inputFromClient = clientSocket.getInputStream();
+                        System.out.println("Read Line");
+                       String result = new BufferedReader(new InputStreamReader(inputFromClient)).lines().collect(Collectors.joining("\n"));
+//                        int deleteId = Integer.parseInt(result);
+                        System.out.println("Read Line");
+//                        infoDao.deleteGameById(deleteId);
                         gameList = infoDao.findAllGames();
                         gameListJSON = Json.gameListToJson(gameList);
                         socketWriter.println(gameListJSON);

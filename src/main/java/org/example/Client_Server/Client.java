@@ -76,11 +76,9 @@ public class Client
 
                 }
                 else if (userRequest.equals("4")){
-                    String JsonGameId = in.readLine();
                     System.out.println("What game would you like to DELETE: ");
                     Scanner kb = new Scanner(System.in);
-
-
+                    String JsonGameId = in.readLine();
 
 
                     try(BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream())) {
