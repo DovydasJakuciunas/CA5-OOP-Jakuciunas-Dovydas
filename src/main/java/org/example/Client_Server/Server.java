@@ -119,6 +119,13 @@ public class Server {
                          socketWriter.println(gameListJSON);
                         System.out.println("Server message: Send Find all Entities in Database to Client");
                     }
+                    else if (request.equals("3")){
+
+                    }
+                    else if (request.equals("4"))
+                    {
+
+                    }
                     else {
                         socketWriter.println("Error: invalid input!!!");
                         System.out.println("Your request "+ request+": Can't be fulfilled");

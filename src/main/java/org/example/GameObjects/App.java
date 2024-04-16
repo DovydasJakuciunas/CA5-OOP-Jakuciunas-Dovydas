@@ -65,13 +65,7 @@ public class App {
 
         }
         else if (usersChoice ==5 ){
-            System.out.println("What's the ID of the game you'd like to update:");
-            int Id = in.nextInt();
-            if (Id == 1)
-            {
-                game.setGame_name("Fallout 3");
-            }
-            IInfoDao.updateGameById(1, game);
+            GameUpdateById(in, IInfoDao, game);
         }
         else if(usersChoice==6)
         {
@@ -88,6 +82,16 @@ public class App {
         else if (usersChoice == 0) {
             System.exit(0);
         }
+    }
+
+    private static void GameUpdateById(Scanner in, InfoDaoInterface IInfoDao, Game_Information game) throws DaoException {
+        System.out.println("What's the ID of the game you'd like to update:");
+        int Id = in.nextInt();
+        if (game.getGameId()==Id)
+        {
+            game.setGame_name("Fallout 3");
+        }
+        IInfoDao.updateGameById(Id, game);
     }
 
     private static void SingleGameToJson(Scanner in, InfoDaoInterface IInfoDao, Json jsonConvert) throws DaoException {

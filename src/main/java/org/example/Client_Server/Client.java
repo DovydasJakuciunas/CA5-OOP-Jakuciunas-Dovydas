@@ -73,6 +73,12 @@ public class Client
 
 
                 }
+                else if (userRequest.equals("3")){
+
+                }
+                else if (userRequest.equals("4")){
+
+                }
                 else
                 {
                     System.out.println("Not a valid user request.");
