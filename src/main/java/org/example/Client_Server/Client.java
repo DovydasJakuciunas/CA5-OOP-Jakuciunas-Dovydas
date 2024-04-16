@@ -5,13 +5,12 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import org.example.DTOs.Game_Information;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.awt.*;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.Buffer;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -79,15 +78,29 @@ public class Client
                 else if (userRequest.equals("4")){
                     String JsonGameId = in.readLine();
                     System.out.println("What game would you like to DELETE: ");
+                    Scanner kb = new Scanner(System.in);
 
-                    try {
+
+
+
+                    try(BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream())) {
+
+                        int deleteId = kb.nextInt();
+
+                        bos.write((deleteId ));
+                        bos.flush();
+
                         Type collectionClient = new TypeToken<Collection<Game_Information>>(){}.getType();
                         Collection<Game_Information> game = gsonParser.fromJson(JsonGameId, collectionClient);
                         System.out.println(game);
+
+
                     }
                     catch (JsonSyntaxException ex) {
                         System.out.println("Jason syntax error encountered. " + ex);
                     }
+
+
 
                 }
                 else
